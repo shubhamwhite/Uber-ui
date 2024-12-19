@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import homeImage from '/homeImage/logo/Uber_logo_2018.svg.png';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { URLS } from "../constant/urls";
+import axios from 'axios'
+import {UserDataContext} from "../context/userContext";
 
 const UserSignup = () => {
   const [first, setFirst]  = useState('')
@@ -8,17 +11,28 @@ const UserSignup = () => {
   const [email, setEmail]  = useState('')
   const [password, setPassword] = useState('')
   const [userData, setUserData] = useState({})
+ 
+  const navigate = useNavigate()
 
-  const submitHandler = (e) => {
+  const {user, setUser} = React.useContext(UserDataContext)
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    setUserData({
-      fullName: {
-        first: first,
-        last: last,
-      },
-      email: email,
-      password: password
-    })
+    const newUser = {
+        full_name: {
+          first_name: first,
+          last_name: last,
+        },
+        email: email,
+        password: password
+    }
+   const response = await  axios.post(`${URLS.BASE_URL}${URLS.USER_REGISTER}`, newUser)
+
+   if(response.status === 201){
+      const data = response.data
+      setUser(data.user)
+      navigate('/home')
+   }
 
     setFirst('')
     setLast('')
@@ -87,7 +101,7 @@ const UserSignup = () => {
       </div>
       <div>
         <p className="text-[10px] mb-10">
-        Movement is what we power. It’s our lifeblood. It runs through our veins. It’s what gets us out of bed each morning. It pushes us to constantly reimagine how we can move better. For you. For all the places you want to go.
+        For Uber users, adding <span className="underline"> Google reCAPTCHA to the signup page </span> ensures that only genuine customers can create accounts, protecting the platform from spam and bots.
         </p>
       </div>
       {/* <div>

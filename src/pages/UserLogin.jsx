@@ -48,7 +48,7 @@ const UserLogin = () => {
           >
             Login
           </button>
-          <p className="text-center">New here? <Link to='/user-signup' className="text-blue-800">Create new Account</Link></p>
+          <p className="text-[14px] text-center">New here? <Link to='/user-signup' className="text-blue-800">Create new Account</Link></p>
         </form>
       </div>
       <div>

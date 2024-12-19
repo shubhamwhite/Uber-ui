@@ -87,7 +87,7 @@ const CaptainSignup = () => {
       </div>
       <div>
         <p className="text-[10px] mb-10">
-        Movement is what we power. It’s our lifeblood. It runs through our veins. It’s what gets us out of bed each morning. It pushes us to constantly reimagine how we can move better. For you. For all the places you want to go.
+        For Uber captains, implementing <span className="underline">Google reCAPTCHA during registration ensures that only verified</span> drivers can sign up, preventing fraudulent activity and enhancing the overall security of the platform.
         </p>
       </div>
       {/* <div>
