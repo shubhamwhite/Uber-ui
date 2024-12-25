@@ -26,12 +26,13 @@ const UserSignup = () => {
         email: email,
         password: password
     }
+    
    const response = await  axios.post(`${URLS.BASE_URL}${URLS.USER_REGISTER}`, newUser)
 
    if(response.status === 201){
       const data = response.data
       setUser(data.user)
-      navigate('/home')
+      navigate('/user-login')
    }
 
     setFirst('')
