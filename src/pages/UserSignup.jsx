@@ -3,7 +3,7 @@ import homeImage from '/homeImage/logo/Uber_logo_2018.svg.png';
 import { Link, useNavigate } from "react-router-dom";
 import { URLS } from "../constant/urls";
 import axios from 'axios'
-import {UserDataContext} from "../context/userContext";
+import {UserDataContext} from "../context/UserContext";
 
 const UserSignup = () => {
   const [first, setFirst]  = useState('')
@@ -25,20 +25,27 @@ const UserSignup = () => {
         },
         email: email,
         password: password
+    };
+  
+    try {
+      const response = await axios.post(`${URLS.BASE_URL}${URLS.USER_REGISTER}`, newUser);
+  
+      if (response.status === 201) {
+        const data = response.data;
+        setUser(data.user);
+        localStorage.setItem('token',data.message.token)
+        navigate('/user-login');
+      }
+    } catch (error) {
+      console.error('Signup error:', error.message);
     }
-   const response = await  axios.post(`${URLS.BASE_URL}${URLS.USER_REGISTER}`, newUser)
-
-   if(response.status === 201){
-      const data = response.data
-      setUser(data.user)
-      navigate('/home')
-   }
-
-    setFirst('')
-    setLast('')
-    setEmail('')
-    setPassword('')
-  }
+  
+    setFirst('');
+    setLast('');
+    setEmail('');
+    setPassword('');
+  };
+  
 
   return (
     <div className="p-7 h-screen flex flex-col justify-between">
