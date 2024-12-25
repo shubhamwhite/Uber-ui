@@ -30,7 +30,7 @@ const UserLogin = () => {
       if (response.status === 200) {
         const data = response.data;
         setUser(data.user);
-        localStorage.setItem('token',data.message.token)
+        localStorage.setItem('token',data.data.token)
         navigate("/home");
       }
     } catch (error) {
