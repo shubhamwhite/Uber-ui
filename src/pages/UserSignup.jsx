@@ -33,7 +33,7 @@ const UserSignup = () => {
       if (response.status === 201) {
         const data = response.data;
         setUser(data.user);
-        localStorage.setItem('token',data.data.token)
+        localStorage.setItem('token',data.message.token)
         navigate('/user-login');
       }
     } catch (error) {

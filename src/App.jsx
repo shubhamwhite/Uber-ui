@@ -9,6 +9,7 @@ import CaptainSignup from "./pages/CaptainSignup";
 import { UserDataContext } from "./context/UserContext";
 import UserProtactedWrapper from "./pages/UserProtactedWrapper";
 import UserLogOut from "./pages/UserLogOut";
+import CaptainHome from "./pages/CaptainHome";
 
 const App = () => {
   const ans = useContext(UserDataContext); // Insure data is goted or not
@@ -38,6 +39,8 @@ const App = () => {
           </UserProtactedWrapper>
         }
         />
+
+        <Route path='/captain-home' element={<CaptainHome/>}/>
 
        </Routes>
 
