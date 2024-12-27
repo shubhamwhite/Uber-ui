@@ -40,13 +40,12 @@ const CaptainSignup = () => {
     }
 
     const response = await axios.post(`${URLS.BASE_URL}${URLS.CAPTAIN_REGISTER}`, captainData);
-    console.log(response,"+++++++++++++++++")
     if(response.status === 201){
       const data = response.data
-      console.log(data,"+++++++++++++++++")
+      console.log(data,"+++++++++++++++")
       setCaptain(data.captain)
-      localStorage.setItem('token', data.token)
-      navigate('/captain-home')
+      localStorage.setItem('token', data.message.token)
+      navigate('/captain-login')
     }
 
     setFirst('')
@@ -166,7 +165,7 @@ const CaptainSignup = () => {
           >
             Signup Captain
           </button>
-          <p className="text-[14px] text-center">Already have an account? <Link to='/captain-signin' className="text-blue-800">login here</Link></p>
+          <p className="text-[14px] text-center">Already have an account? <Link to='/captain-login' className="text-blue-800">login here</Link></p>
         </form>
       </div>
       <div>

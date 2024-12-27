@@ -10,6 +10,8 @@ import { UserDataContext } from "./context/UserContext";
 import UserProtactedWrapper from "./pages/UserProtactedWrapper";
 import UserLogOut from "./pages/UserLogOut";
 import CaptainHome from "./pages/CaptainHome";
+import CaptainProtactedWrapper from "./pages/CaptainProtactedWrapper";
+import CaptainLogOut from "./pages/CaptainLogOut";
 
 const App = () => {
   const ans = useContext(UserDataContext); // Insure data is goted or not
@@ -20,8 +22,9 @@ const App = () => {
         <Route path="/" element={<Start />} />
         <Route path="/user-login" element={<UserLogin />} />
         <Route path="/user-signup" element={<UserSignup />} />
-        <Route path="/captain-signin" element={<CaptainLogin />} />
+        <Route path="/captain-login" element={<CaptainLogin />} />
         <Route path="/captain-signup" element={<CaptainSignup />} />
+
         <Route
           path="/home"
           element={
@@ -34,17 +37,32 @@ const App = () => {
         <Route
           path="/user-logout"
           element={
-          <UserProtactedWrapper>
-            <UserLogOut/>
-          </UserProtactedWrapper>
-        }
+            <UserProtactedWrapper>
+              <UserLogOut />
+            </UserProtactedWrapper>
+          }
         />
 
-        <Route path='/captain-home' element={<CaptainHome/>}/>
+        <Route
+          path="/captain-home"
+          element={
+            <CaptainProtactedWrapper>
+              <CaptainHome />
+            </CaptainProtactedWrapper>
+          }
+        />
 
-       </Routes>
+        <Route
+          path="/captain-logout"
+          element={
+            <CaptainProtactedWrapper>
+              <CaptainLogOut />
+            </CaptainProtactedWrapper>
+          }
+        />
 
 
+      </Routes>
     </div>
   );
 };
