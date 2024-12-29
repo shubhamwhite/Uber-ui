@@ -18,13 +18,13 @@ const CaptainProtactedWrapper = ({children}) => {
       }
     },[token])
   
-     axios.get(`${URLS.BASE_URL}${URLS.CAPTAIN_PROFILE}`,{
+    axios.get(`${URLS.BASE_URL}${URLS.CAPTAIN_PROFILE}`,{
         headers:{
             Authorization: `Bearer ${token}`
         }
      }).then(response=>{
         if(response.status === 200){
-            setCaptain(response.data.captain)
+            setCaptain(response.data.data.captain)
             setIsLoading(false)
         }
      }).catch(err=>{

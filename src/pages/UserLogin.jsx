@@ -29,9 +29,9 @@ const UserLogin = () => {
       );
       if (response.status === 200) {
         const data = response.data;
-        console.log(data,"++++++++++++++")
-        setUser(data.message);
-        localStorage.setItem('token',data.message.token)
+        console.log(data,"+++++++-----+++++++")
+        setUser(data.data.message);
+        localStorage.setItem('token',data.data.token)
         navigate("/home");
       }
     } catch (error) {
